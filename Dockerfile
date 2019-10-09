@@ -1,4 +1,4 @@
-FROM node
+FROM node as node
 WORKDIR /app
 
 COPY package*.json ./
@@ -9,5 +9,5 @@ RUN npm run build
 
 FROM nginx
 RUN mkdir /app
-COPY --from=0 /app/dist /app
+COPY --from=node /app/dist /app
 COPY nginx.conf /etc/nginx/nginx.conf
