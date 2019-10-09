@@ -9,7 +9,7 @@ docker stop vue_test || true;
 # 删除vue_test容器
 docker rm vue_test || true;
 # 基于vue/test 镜像 构建一个容器 vue_test
-docker run -p 8081:80 -d --name vue_test vue/test:$image_version;
+docker run -v /home/nginx/logs:/var/log/nginx -p 8081:80 -d --name vue_test vue/test:$image_version;
 # 查看日志
 docker logs vue_test;
 #删除build过程中产生的镜像    #docker image prune -a -f
