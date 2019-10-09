@@ -9,5 +9,6 @@ RUN npm run build
 
 FROM nginx
 RUN mkdir /app
+VOLUME ./logs:/var/log/nginx
 COPY --from=node /app/dist /app
 COPY nginx.conf /etc/nginx/nginx.conf
